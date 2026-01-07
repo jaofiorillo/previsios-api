@@ -11,10 +11,13 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
             type: 'postgres',
             host: this.configService.get<string>('DB_HOST'),
             port: this.configService.get<number>('DB_PORT'),
-            username: this.configService.get<string>('DB_USERNAME'),
+            username: this.configService.get<string>('DB_USER'),
             password: this.configService.get<string>('DB_PASSWORD'),
             database: this.configService.get<string>('DB_NAME'),
             entities: [__dirname + '/../**/*.entity.{js,ts}'],
+            ssl: this.configService.get<boolean>('DB_SSL')
+                ? { rejectUnauthorized: false }
+                : false,
         };
     }
 }
