@@ -20,6 +20,12 @@ export class UserEntity {
     @Column({ name: 'password', nullable: false })
     password: string;
 
+    @Column({ name: 'role', nullable: false })
+    role: string;
+
+    @Column({ name: 'status', nullable: false })
+    status: string;
+
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;
 
