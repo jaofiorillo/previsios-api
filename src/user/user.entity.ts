@@ -5,6 +5,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 } from 'typeorm';
+import { EStatus } from './enums/user_status.enum';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -23,8 +24,13 @@ export class UserEntity {
     @Column({ name: 'role', nullable: false })
     role: string;
 
-    @Column({ name: 'status', nullable: false })
-    status: string;
+    @Column({
+        name: 'status',
+        nullable: false,
+        type: 'enum',
+        enum: EStatus,
+    })
+    status: EStatus;
 
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;

@@ -10,6 +10,7 @@ import { Repository } from 'typeorm';
 import { UserDto, UserResponse } from './dto/user.dto';
 import { plainToInstance } from 'class-transformer';
 import * as bcrypt from 'bcryptjs';
+import { EStatus } from './enums/user_status.enum';
 
 @Injectable()
 export class UserService {
@@ -18,14 +19,17 @@ export class UserService {
         private readonly userRepository: Repository<UserEntity>,
     ) {}
 
-    async create(user: UserDto) {
-        const checkEmail = await this.emailExists(user.email);
+    async create(userDto: UserDto) {
+        const checkEmail = await this.emailExists(userDto.email);
 
         if (checkEmail) {
             throw new BadRequestException('Existing email!');
         }
 
-        user.password = await bcrypt.hash(user.password, 10);
+        userDto.password = await bcrypt.hash(userDto.password, 10);
+        const user = this.userRepository.create(userDto);
+        user.status = EStatus.Ativo;
+        user.role = 'USER';
         await this.userRepository.save(user);
     }
 
