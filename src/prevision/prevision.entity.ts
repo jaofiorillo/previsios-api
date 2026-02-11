@@ -1,4 +1,4 @@
-import { ReservoirEntity } from '../reservoir/reservoir.entity';
+import { ReservoirEntity } from 'reservoir/reservoir.entity';
 import {
     Entity,
     Column,
@@ -25,6 +25,20 @@ export class PrevisionEntity {
         nullable: true,
     })
     previsionValue: number | null;
+
+    @Column({
+        name: 'min_value',
+        type: 'float',
+        nullable: true,
+    })
+    minValue: number | null;
+
+    @Column({
+        name: 'max_value',
+        type: 'float',
+        nullable: true,
+    })
+    maxValue: number | null;
 
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;

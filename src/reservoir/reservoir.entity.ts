@@ -1,6 +1,6 @@
-import { CityEntity } from '../city/city.entity';
-import { LevelReservoirEntity } from '../level_reservoir/level-reservoir.entity';
-import { PrevisionEntity } from '../prevision/prevision.entity';
+import { CityEntity } from 'city/city.entity';
+import { LevelReservoirEntity } from 'level_reservoir/level-reservoir.entity';
+import { PrevisionEntity } from 'prevision/prevision.entity';
 import {
     Entity,
     Column,
@@ -28,21 +28,11 @@ export class ReservoirEntity {
     @Column({ name: 'capacity', type: 'varchar', length: 50 })
     capacity: string;
 
-    @Column({
-        name: 'latitude',
-        type: 'decimal',
-        precision: 9,
-        scale: 6,
-    })
-    latitude: number;
+    @Column({ name: 'latitude', type: 'varchar', length: 50 })
+    latitude: string;
 
-    @Column({
-        name: 'longitude',
-        type: 'decimal',
-        precision: 9,
-        scale: 6,
-    })
-    longitude: number;
+    @Column({ name: 'longitude', type: 'varchar', length: 50 })
+    longitude: string;
 
     @ManyToOne(() => CityEntity, (city) => city.reservoirs, {
         onDelete: 'CASCADE',
