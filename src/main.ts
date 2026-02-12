@@ -4,6 +4,7 @@ import { useContainer } from 'class-validator';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 import { AppModule } from './app.module';
+import { writeFileSync } from 'fs';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -12,7 +13,7 @@ async function bootstrap() {
             transform: true,
             whitelist: true,
             forbidNonWhitelisted: true,
-        }),
+        })
     );
 
     useContainer(app.select(AppModule), { fallbackOnErrors: true });
@@ -28,6 +29,7 @@ async function bootstrap() {
         .build();
 
     const document = SwaggerModule.createDocument(app, config);
+    writeFileSync('./swagger.json', JSON.stringify(document, null, 2));
     SwaggerModule.setup('swagger', app, document);
 
     await app.listen(process.env.PORT ?? 3000);

@@ -1,11 +1,5 @@
 import { ReservoirEntity } from '../reservoir/reservoir.entity';
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    OneToMany,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
 
 @Entity({ name: 'city' })
 export class CityEntity {

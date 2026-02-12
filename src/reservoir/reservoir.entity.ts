@@ -1,15 +1,7 @@
 import { CityEntity } from 'city/city.entity';
 import { LevelReservoirEntity } from 'level_reservoir/level-reservoir.entity';
 import { PrevisionEntity } from 'prevision/prevision.entity';
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    ManyToOne,
-    OneToMany,
-    JoinColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 
 @Entity({ name: 'reservoir' })
 export class ReservoirEntity {
@@ -18,9 +10,6 @@ export class ReservoirEntity {
 
     @Column({ name: 'name', type: 'varchar', length: 100 })
     name: string;
-
-    @Column({ name: 'password', type: 'varchar', length: 50 })
-    password: string;
 
     @Column({ name: 'status', type: 'varchar', length: 10 })
     status: string;

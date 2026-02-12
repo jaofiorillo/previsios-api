@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserDto } from './dto/user.dto';
 import { Public } from 'decorators/decorators';
 
-@Controller('users')
+@Controller('api/users')
 export class UserController {
     constructor(private readonly userService: UserService) {}
 

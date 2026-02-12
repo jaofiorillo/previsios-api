@@ -1,12 +1,5 @@
 import { ReservoirEntity } from 'reservoir/reservoir.entity';
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    ManyToOne,
-    CreateDateColumn,
-    JoinColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, JoinColumn } from 'typeorm';
 
 @Entity({ name: 'prevision' })
 export class PrevisionEntity {
